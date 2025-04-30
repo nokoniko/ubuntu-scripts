@@ -1,21 +1,25 @@
 #!/bin/bash
 
+echo "Hva vil du kalle folderen?"
+read serverfolder
 
-# lager en folder med navn minecraft_server for å ha det rydig
-mkdir -p minecraft_server
-cd minecraft_server
+# Lager mappen og går inn i den
+mkdir -p "$serverfolder"
+cd "$serverfolder" || exit
 
-# laster temux og java jdk
+# Oppdater og installer nødvendige pakker
 sudo apt update 
 sudo apt install tmux openjdk-21-jdk-headless -y
-# laster ned den nyeste versonen av paper for at bedrock og java kan spille på samme server
+
+# Last ned PaperMC (Java-server som støtter plugins)
 wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar -O paper.jar
 
-# gjør som at den eutomatisk agreeer til eulaen
+# Godta EULA
 echo "eula=true" > eula.txt
 
-# lager en ny folder med navn plugins
+# Lag plugins-mappen og last ned Geyser
 mkdir -p plugins 
-wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar # laster ned bedrock suport
+wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar
 
-tmux new-session -d -s minecraft "java -Xmx1024M -Xms1024M -jar paper.jar nogui" # runner serveren
+# Start serveren i bakgrunnen med tmux
+tmux new-session -d -s minecraft "java -Xmx1024M -Xms1024M -jar paper.jar nogui"
