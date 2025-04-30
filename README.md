@@ -4,7 +4,7 @@ minecraft server settopp for ubtunu
 for å bruke scriptet gjør
 
   ```bash
-  wget https://github.com/nokoniko/mcsettupubuntu/raw/refs/heads/main/server.sh
+  wget https://raw.githubusercontent.com/nokoniko/automatisk-paper-server-ubuntu/refs/heads/main/server.sh
   ```
   ```bash
   chmod +x server.sh
@@ -16,7 +16,7 @@ for å bruke scriptet gjør
 om du vill ha et script som starter serveren
 
   ```bash
-  wget https://raw.githubusercontent.com/nokoniko/mcsettupubuntu/refs/heads/main/start.sh
+  wget https://raw.githubusercontent.com/nokoniko/automatisk-paper-server-ubuntu/refs/heads/main/server.sh
   ```
   ```bash
   chmod +x start.sh
