@@ -25,5 +25,6 @@ if [ $? == 0 ]; then
   echo "Tømte eksisterende tmux-sesjon."
 fi
 
-# Start serveren i bakgrunnen med tmux
-tmux new-session -d -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
+echo "eula=true" > eula.txt
+
+tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
