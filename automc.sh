@@ -14,9 +14,6 @@ sudo apt install tmux openjdk-21-jdk-headless -y
 # Last ned PaperMC (Java-server som støtter plugins)
 wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar -O paper.jar
 
-# Godta EULA
-echo "eula=true" > eula.txt
-
 # Lag plugins-mappen og last ned Geyser
 mkdir -p plugins 
 wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar
