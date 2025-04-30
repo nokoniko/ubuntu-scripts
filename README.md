@@ -4,7 +4,11 @@ minecraft server settopp for ubtunu
 for å bruke scriptet gjør
 ```bash
 wget https://github.com/nokoniko/mcsettupubuntu/raw/refs/heads/main/server.sh
+```
+```bash
 chmod +x server.sh
+```
+```bash
 ./server.sh
 ```
 
