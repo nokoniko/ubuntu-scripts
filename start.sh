@@ -10,4 +10,4 @@ read mappenavn
 cd "$mappenavn"
 
 # starter en ny temux session
-tmux new-session -d -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
+tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
