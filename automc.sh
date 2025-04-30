@@ -11,6 +11,9 @@ cd "$serverfolder" || exit
 sudo apt update 
 sudo apt install tmux openjdk-21-jdk-headless -y
 
+# slutter en temux session om den har navnet minecraft
+tmux kill-session -t minecraft 
+
 # Last ned PaperMC (Java-server som støtter plugins)
 wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar
 
