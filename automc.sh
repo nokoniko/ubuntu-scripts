@@ -1,25 +1,29 @@
 #!/bin/bash
 
-echo "Hva vil du kalle folderen?"
-read serverfolder
+echo "Hva vil du kalle mappen for"
+read mappenavn
 
 # Lager mappen og går inn i den
-mkdir -p "$serverfolder"
-cd "$serverfolder" || exit
+mkdir -p "$mappenavn"
+cd "$mappenavn" || exit
 
 # Oppdater og installer nødvendige pakker
 sudo apt update 
-sudo apt install tmux openjdk-21-jdk-headless -y
-
-# slutter en temux session om den har navnet minecraft
-tmux kill-session -t minecraft 
+sudo apt install -y tmux openjdk-21-jdk-headless wget
 
 # Last ned PaperMC (Java-server som støtter plugins)
-wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar
+wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar || { echo "Feil under nedlasting av PaperMC."; exit 1; }
 
-# Lag plugins-mappen og last ned Geyser
+# Lag en plugins mappe og last ned geyser
 mkdir -p plugins 
-wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar
+wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar || { echo "Feil under nedlasting av Geyser."; exit 1; }
+
+# Sjekk om tmux sesjonen allerede finnes og avslutt den om nødvendig
+tmux has-session -t minecraft 2>/dev/null
+if [ $? == 0 ]; then
+  tmux kill-session -t minecraft
+  echo "Tømte eksisterende tmux-sesjon."
+fi
 
 # Start serveren i bakgrunnen med tmux
-echo "får å starte serveren gjør tmux new-session -d -s minecraft "java -Xmx1024M -Xms1024M -jar paper.jar nogui""
+tmux new-session -d -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
