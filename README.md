@@ -11,9 +11,10 @@ chmod +x server.sh
 ```bash
 ./server.sh
 ```
-<span style="color:green">
+<span style="color:red">
 om du vill ha et script som starter serveren
 </span>
+
 
 ```bash
 wget https://raw.githubusercontent.com/nokoniko/mcsettupubuntu/refs/heads/main/start.sh
