@@ -2,8 +2,10 @@
 
 #!/bin/bash
 
-echo "Hva vil du kalle mappen for"
-read mappenavn
+read -p "hva er minecraft usernamet dit?: " mcnavn
+
+read -p "Hva vil du kalle mappen for?: " mappenavn
+
 
 # Lager mappen og går inn i den
 mkdir -p "$mappenavn"
@@ -32,3 +34,7 @@ echo "eula=true" > eula.txt
 
 # starter en tmux session
 tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
+
+/whitelist on
+/whitelist $mcnavn
+/op $mcnavn
