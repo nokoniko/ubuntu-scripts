@@ -1,3 +1,5 @@
+# lagt av nikonoko
+
 #!/bin/bash
 
 echo "Hva vil du kalle mappen for"
