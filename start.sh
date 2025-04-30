@@ -1,3 +1,4 @@
+# lagt av nikonoko
 #!/bin/bash
 
 # sjekker hvilen filler du har 
