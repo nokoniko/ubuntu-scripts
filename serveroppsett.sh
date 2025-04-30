@@ -25,6 +25,8 @@ if [ $? == 0 ]; then
   echo "Tømte eksisterende tmux-sesjon."
 fi
 
+# automatisk godtar euulaen til mojan
 echo "eula=true" > eula.txt
 
+# starter en tmux session
 tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
