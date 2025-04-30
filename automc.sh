@@ -21,4 +21,4 @@ echo "eula=true" > eula.txt
 mkdir -p plugins 
 wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar
 
-echo " får å starte serveren gjør tmux new-session -d -s minecraft "java -Xmx1024M -Xms1024M -jar paper.jar nogui" "
+echo "‘\033[0;32mfår å starte serveren gjør tmux new-session -d -s minecraft "java -Xmx1024M -Xms1024M -jar paper.jar nogui""
