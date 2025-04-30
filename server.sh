@@ -2,8 +2,10 @@
 
 #!/bin/bash
 
+# spør hva minecraft navnet dit er
 read -p "hva er minecraft usernamet dit?: " mcnavn
 
+# spør om hva du vill kalle mappen for serveren for
 read -p "Hva vil du kalle mappen for?: " mappenavn
 
 
@@ -35,6 +37,9 @@ echo "eula=true" > eula.txt
 # starter en tmux session
 tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
 
+# setter whitelist på og whitelister deg selv
 /whitelist on
 /whitelist $mcnavn
+
+# gjør deg om til operator på serveren
 /op $mcnavn
