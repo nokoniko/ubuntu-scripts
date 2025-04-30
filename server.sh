@@ -11,7 +11,7 @@ cd "$mappenavn" || exit
 
 # Oppdater og installer nødvendige pakker
 sudo apt update 
-sudo apt install -y tmux openjdk-21-jdk-headless wget
+sudo apt install -y tmux openjdk-21-jdk-headless wget sl
 
 # Last ned PaperMC (Java-server som støtter plugins)
 wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar || { echo "Feil under nedlasting av PaperMC."; exit 1; }
