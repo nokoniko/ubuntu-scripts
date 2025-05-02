@@ -61,4 +61,5 @@ fi
 echo "eula=true" > eula.txt
 
 # starter en tmux session
-tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui"
+tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar server.jar nogui"
+fi
