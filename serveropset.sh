@@ -5,20 +5,23 @@ sudo apt update
 sudo apt install -y tmux openjdk-21-jdk-headless wget sl
 
 # spør om hva du vil kalle mappen
-echo "Hva vil du kalle mappen?"
-read mappenavn
+read "Hva vil du kalle mappen? " mappenavn
 
 # spør om det skal ha bedrock-support
-echo "Skal den ha bedrock-support? y/n: "
-read valg
+read "Skal den ha bedrock-support? (y/n): " valg
+
+# spør om du vill ha starter scriptet
+read "Vil du ha start.sh som vil starte riktig server? (y/n): " valg2
 
 # lager mappen og går inn i den
 mkdir -p "$mappenavn"
 cd "$mappenavn" || exit
 
-# laster ned starteren får serveren
-wget wget https://raw.githubusercontent.com/nokoniko/automatisk-paper-server-ubuntu/refs/heads/main/start.sh
-chmod +x start.sh
+if [ "$valg2" = "y" ]; then
+    # laster ned starteren får serveren
+    wget https://raw.githubusercontent.com/nokoniko/automatisk-paper-server-ubuntu/refs/heads/main/start.sh
+    chmod +x start.sh
+fi
 
 if [ "$valg" = "y" ]; then
     # Last ned PaperMC
