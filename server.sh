@@ -1,10 +1,12 @@
 #!/bin/bash
 
 # spør om hav du vill kalle mappen for
-read "Hva vil du kalle mappen for" mappenavn
+echo "Hva vil du kalle mappen for"
+read mappenavn
 
 # spør om du vill ha bedrock eller ikke 
-read "skall den ha bedrock support? y/n: " valg
+echo "skall den ha bedrock support? y/n: "
+read valg
 
 # Lager mappen og går inn i den
 mkdir -p "$mappenavn"
@@ -46,7 +48,7 @@ tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.ja
 elif if [ "$valg" = "n"]; then
 
 # får minecraft server jaren fra mojangs offisiele nettside
-wget https://launcher.mojang.com/v1/objects/1b4a79cc4ac7f67bb6d913478efb78c4eebfd74e/server.jar -O minecraft_server.jar || { echo "Feil under nedlasting av minecraft server jar."; exit 1; }
+wget https://launcher.mojang.com/v1/objects/1b4a79cc4ac7f67bb6d913478efb78c4eebfd74e/server.jar || { echo "Feil under nedlasting av minecraft server jar."; exit 1; }
 
 # Sjekk om tmux sesjonen allerede finnes og avslutt den om nødvendig
 tmux has-session -t minecraft 2>/dev/null
