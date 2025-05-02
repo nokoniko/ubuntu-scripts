@@ -7,7 +7,6 @@ read "Hva vil du kalle mappen for" mappenavn
 mkdir -p "$mappenavn"
 cd "$mappenavn" || exit
 
-
 # Last ned PaperMC (Java-server som støtter plugins)
 wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar || { echo "Feil under nedlasting av PaperMC."; exit 1; }
 
