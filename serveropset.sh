@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# oppdater og installer nødvendige pakker
+sudo apt update
+sudo apt install -y tmux openjdk-21-jdk-headless wget sl
+
 # spør om hva du vil kalle mappen
 echo "Hva vil du kalle mappen?"
 read mappenavn
@@ -12,9 +16,9 @@ read valg
 mkdir -p "$mappenavn"
 cd "$mappenavn" || exit
 
-# oppdater og installer nødvendige pakker
-sudo apt update
-sudo apt install -y tmux openjdk-21-jdk-headless wget sl
+# laster ned starteren får serveren
+wget wget https://raw.githubusercontent.com/nokoniko/automatisk-paper-server-ubuntu/refs/heads/main/start.sh
+chmod +x start.sh
 
 if [ "$valg" = "y" ]; then
     # Last ned PaperMC
@@ -30,20 +34,28 @@ if [ "$valg" = "y" ]; then
         tmux kill-session -t minecraft
         echo "Tømte eksisterende tmux-sesjon."
     fi
-
+    
+    # auto akseptere mojangs eula
     echo "eula=true" > eula.txt
+
+    # starter en ny tmux session med paper serveren
     tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
 
 elif [ "$valg" = "n" ]; then
+    # laster ned mojang serveren fra den offisile nestiden
     wget https://launcher.mojang.com/v1/objects/1b4a79cc4ac7f67bb6d913478efb78c4eebfd74e/server.jar || { echo "Feil under nedlasting av Minecraft server."; exit 1; }
 
+    # sjekker om det alerede er en tmux 
     tmux has-session -t minecraft 2>/dev/null
     if [ $? == 0 ]; then
         tmux kill-session -t minecraft
         echo "Tømte eksisterende tmux-sesjon."
     fi
 
+    # auto akseptere mojangs eula
     echo "eula=true" > eula.txt
+
+    # starter en ny tmux session med mojang serveren
     tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar server.jar nogui"
 else
     echo "Ugyldig valg. Skriv y eller n."
