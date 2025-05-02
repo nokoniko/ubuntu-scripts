@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# sjekker hvilen filler du har 
-ls
-# sprø om hvilken mappe du vill gå in i
-echo "hvilken mappe vill du gå in i? "
-read mappenavn
-
-cd "$mappenavn" || exit
-
 # spør om du vill ha bedrock eller ikke 
 read "er det en vanilla eller paper server vanilla/paper: " valg
 # starter en ny temux session
