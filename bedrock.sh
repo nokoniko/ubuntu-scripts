@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # spør om hav du vill kalle mappen for
-echo "Hva vil du kalle mappen for"
-read mappenavn
+read "Hva vil du kalle mappen for" mappenavn
 
 # Lager mappen og går inn i den
 mkdir -p "$mappenavn"
