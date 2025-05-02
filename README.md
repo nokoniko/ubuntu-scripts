@@ -4,7 +4,7 @@ minecraft server settopp for ubtunu
 for å laste med bedrock gjør
 
   ```bash
-  wget https://raw.githubusercontent.com/nokoniko/automatisk-minecraft-server-ubuntu/refs/heads/main/serveropset.sh.sh 
+  wget https://raw.githubusercontent.com/nokoniko/automatisk-minecraft-server-ubuntu/refs/heads/main/serveropset.sh
   ```
   ```bash
   chmod +x serveropset.sh.sh
