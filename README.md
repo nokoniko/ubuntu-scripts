@@ -4,24 +4,13 @@ minecraft server settopp for ubtunu
 for å laste med bedrock gjør
 
   ```bash
-  wget https://raw.githubusercontent.com/nokoniko/automatisk-minecraft-server-ubuntu/refs/heads/main/bedrock.sh 
+  wget https://raw.githubusercontent.com/nokoniko/automatisk-minecraft-server-ubuntu/refs/heads/main/serveropset.sh.sh 
   ```
   ```bash
-  chmod +x bedrock.sh
+  chmod +x serveropset.sh.sh
   ```
   ```bash
-  ./bedrock.sh
-  ```
-for vanila gjør
-
-  ```bash
-  wget https://raw.githubusercontent.com/nokoniko/automatisk-minecraft-server-ubuntu/refs/heads/main/vanilla.sh
-  ```
-  ```bash
-  chmod +x vanilla.sh
-  ```
-  ```bash
-  ./vanilla.sh
+  ./serveropset.sh.sh
   ```
 
 om du vill ha et script som starter serveren
