@@ -1,62 +1,50 @@
 #!/bin/bash
 
-# spør om hav du vill kalle mappen for
-read "Hva vil du kalle mappen for" mappenavn
+# spør om hva du vil kalle mappen
+echo "Hva vil du kalle mappen?"
+read mappenavn
 
-# spør om du vill ha bedrock eller ikke 
-read "skall den ha bedrock support? y/n: " valg
+# spør om det skal ha bedrock-support
+echo "Skal den ha bedrock-support? y/n: "
+read valg
 
-# Lager mappen og går inn i den
+# lager mappen og går inn i den
 mkdir -p "$mappenavn"
 cd "$mappenavn" || exit
 
-
-# Oppdater og installer nødvendige pakker
-sudo apt update 
+# oppdater og installer nødvendige pakker
+sudo apt update
 sudo apt install -y tmux openjdk-21-jdk-headless wget sl
 
-# om du svarer "y" vill den laste ned alt du trenger til bedrock support
+if [ "$valg" = "y" ]; then
+    # Last ned PaperMC
+    wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar || { echo "Feil under nedlasting av PaperMC."; exit 1; }
 
-#                                                             ------ BEDROCK ------
+    # Lag plugins-mappe og last ned Geyser
+    mkdir -p plugins
+    wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar || { echo "Feil under nedlasting av Geyser."; exit 1; }
 
-if [ "$valg" = "y"]; then
-# Last ned PaperMC (Java-server som støtter plugins)
-wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar || { echo "Feil under nedlasting av PaperMC."; exit 1; }
+    # Tøm eventuell eksisterende tmux-sesjon
+    tmux has-session -t minecraft 2>/dev/null
+    if [ $? == 0 ]; then
+        tmux kill-session -t minecraft
+        echo "Tømte eksisterende tmux-sesjon."
+    fi
 
-# Lag en plugins mappe og last ned geyser
-mkdir -p plugins 
-wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar || { echo "Feil under nedlasting av Geyser."; exit 1; }
+    echo "eula=true" > eula.txt
+    tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
 
-# Sjekk om tmux sesjonen allerede finnes og avslutt den om nødvendig
-tmux has-session -t minecraft 2>/dev/null
-if [ $? == 0 ]; then
-  tmux kill-session -t minecraft
-  echo "Tømte eksisterende tmux-sesjon."
+elif [ "$valg" = "n" ]; then
+    wget https://launcher.mojang.com/v1/objects/1b4a79cc4ac7f67bb6d913478efb78c4eebfd74e/server.jar || { echo "Feil under nedlasting av Minecraft server."; exit 1; }
+
+    tmux has-session -t minecraft 2>/dev/null
+    if [ $? == 0 ]; then
+        tmux kill-session -t minecraft
+        echo "Tømte eksisterende tmux-sesjon."
+    fi
+
+    echo "eula=true" > eula.txt
+    tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar server.jar nogui"
+else
+    echo "Ugyldig valg. Skriv y eller n."
 fi
-
-# automatisk godtar euulaen til mojang
-echo "eula=true" > eula.txt
-
-# starter en tmux session
-tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar paper-1.21.4-227.jar nogui"
-
-#                                                             ------ VANILLA ------
-
-# om du svarer "n" lager den en offisiel server
-elif if [ "$valg" = "n"]; then
-
-# får minecraft server jaren fra mojangs offisiele nettside
-wget https://launcher.mojang.com/v1/objects/1b4a79cc4ac7f67bb6d913478efb78c4eebfd74e/server.jar -O minecraft_server.jar || { echo "Feil under nedlasting av minecraft server jar."; exit 1; }
-
-# Sjekk om tmux sesjonen allerede finnes og avslutt den om nødvendig
-tmux has-session -t minecraft 2>/dev/null
-if [ $? == 0 ]; then
-  tmux kill-session -t minecraft
-  echo "Tømte eksisterende tmux session"
-fi
-
-# automatisk godtar eulaen til mojang
-echo "eula=true" > eula.txt
-
-# starter en tmux session
-tmux new-session -s minecraft "java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui"
