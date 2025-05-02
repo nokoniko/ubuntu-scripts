@@ -33,11 +33,11 @@ if [ "$valg" = "y" ]; then
     mkdir -p plugins
     wget https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot -O plugins/Geyser-Spigot.jar || { echo -e "\e[31mFeil under nedlasting av Geyser.\e[0m"; exit 1; }
 
-    # Tøm eventuell eksisterende tmux-sesjon
+    # Tøm eventuell eksisterende tmux session
     tmux has-session -t minecraft 2>/dev/null
     if [ $? == 0 ]; then
         tmux kill-session -t minecraft
-        echo -e "\e[32mTømte eksisterende tmux-sesjon.\e[0m"
+        echo -e "\e[32mTømte eksisterende tmux session.\e[0m"
     fi
     
     # auto akseptere mojangs eula
@@ -54,7 +54,7 @@ elif [ "$valg" = "n" ]; then
     tmux has-session -t minecraft 2>/dev/null
     if [ $? == 0 ]; then
         tmux kill-session -t minecraft
-        echo -e "\e[32mTømte eksisterende tmux-sesjon.\e[0m"
+        echo -e "\e[32mTømte eksisterende tmux session.\e[0m"
     fi
 
     # auto akseptere mojangs eula
