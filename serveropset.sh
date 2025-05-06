@@ -25,6 +25,12 @@ else
     echo -e "\e[31mUgyldig valg. Skriv y eller n.\e[0m"
 fi
 
+elif [ "$valg2" = "n" ]; then
+    echo "installerer ikke ned start.sh "
+else
+    echo -e "\e[31mUgyldig valg. Skriv y eller n.\e[0m"
+fi
+
 if [ "$valg" = "y" ]; then
     # Last ned PaperMC
     wget https://api.papermc.io/v2/projects/paper/versions/1.21.4/builds/227/downloads/paper-1.21.4-227.jar || { echo -e "\e[31mFeil under nedlasting av PaperMC.\e[0m"; exit 1; }
