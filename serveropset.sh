@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# oppdater og installer nødvendige pakker
-sudo apt update
-sudo apt install -y tmux openjdk-21-jdk-headless wget sl
-
 # spør om hva du vil kalle mappen
 read -p $'\e[32mHva vil du kalle mappen? \e[0m' mappenavn
 
@@ -13,6 +9,11 @@ read -p $'\e[32mSkal den ha bedrock-support? (y/n) \e[0m: ' valg
 # spør om du vill ha starter scriptet
 read  -p $'\e[32mVil du ha start.sh som vil starte riktig server? (y/n): \e[0m' valg2
 echo -e "\e[35m"
+
+# oppdater og installer nødvendige pakker
+sudo apt update
+sudo apt install -y tmux openjdk-21-jdk-headless wget sl
+
 # lager mappen og går inn i den
 mkdir -p "$mappenavn"
 cd "$mappenavn" || exit
@@ -25,7 +26,7 @@ else
     echo -e "\e[31mUgyldig valg. Skriv y eller n.\e[0m"
 fi
 
-elif [ "$valg2" = "n" ]; then
+elif [ "$valg2" = "n" ]; then 
     echo "installerer ikke ned start.sh "
 else
     echo -e "\e[31mUgyldig valg. Skriv y eller n.\e[0m"
