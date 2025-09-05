@@ -33,4 +33,5 @@ wget https://github.com/nokoniko/ubuntu-scripts/blob/main/adnre%20scripts/lamp-s
 chmod +x lamp-setup.sh
 ./start.sh
 ```
+Du må runne dette på root fordi den lager en ny bruker med sudo perms.
 
