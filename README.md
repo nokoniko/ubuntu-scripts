@@ -4,7 +4,7 @@ minecraft server settopp for ubtunu
 får å bruke scripted
 
   ```bash
-  wget https://raw.githubusercontent.com/nokoniko/automatisk-minecraft-server-ubuntu/refs/heads/main/serveropset.sh
+  wget https://github.com/nokoniko/ubuntu-scripts/blob/main/minecraft/serveropset.sh
   ```
   ```bash
   chmod +x serveropset.sh
@@ -24,3 +24,13 @@ om du vill ha et script som starter serveren ( blir automatisk med i serveroppse
   ```bash
   ./start.sh
   ```
+
+# Lamp setopp
+
+får å bruke dette må du 
+```sh
+wget https://github.com/nokoniko/ubuntu-scripts/blob/main/adnre%20scripts/lamp-setup.sh
+chmod +x lamp-setup.sh
+./start.sh
+```
+
