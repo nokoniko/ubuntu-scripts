@@ -2,6 +2,17 @@
 
 Dette repoet inneholder diverse skript for å automatisere oppsett på Ubuntu.
 
+## Kom i gang
+
+Du kan enten klone hele repositoryet for å få tilgang til alle skript, eller laste ned individuelle skript ved behov.
+
+### Klon repositoryet (Anbefalt)
+
+```bash
+git clone https://github.com/nokoniko/ubuntu-scripts.git
+cd ubuntu-scripts
+```
+
 ## Minecraft Server Oppsett
 
 Dette skriptet automatiserer oppsettet av en Minecraft Java Edition-server (Vanilla eller PaperMC) på Ubuntu.
