@@ -1,4 +1,4 @@
-# Ubuntu Scripts
+# Ubuntu-skript
 
 Dette repoet inneholder diverse skript for å automatisere oppsett på Ubuntu.
 
@@ -11,19 +11,20 @@ Du kan enten klone hele repositoryet for å få tilgang til alle skript, eller l
 ```bash
 git clone https://github.com/nokoniko/ubuntu-scripts.git
 cd ubuntu-scripts
+chmod +x build.sh
+./build.sh
 ```
 
 ## Minecraft Server Oppsett
 
-Dette skriptet automatiserer oppsettet av en Minecraft Java Edition-server (Vanilla eller PaperMC) på Ubuntu.
+Disse skriptene automatiserer oppsettet av en Minecraft Java Edition-server (Vanilla eller PaperMC) på Ubuntu.
 
-### Bruk
+### Metode 1: Online-installasjon (Anbefalt)
 
-Kjør følgende kommandoer i terminalen for å laste ned og kjøre skriptet:
+Denne metoden bruker et lite skript som alltid laster ned og kjører den nyeste versjonen av hovedskriptet.
+
 ```bash
-wget https://raw.githubusercontent.com/nokoniko/ubuntu-scripts/main/minecraft/serveropset.sh
-chmod +x serveropset.sh
-./serveropset.sh
+bash <(curl -s https://raw.githubusercontent.com/nokoniko/ubuntu-scripts/main/minecraft/online.sh)
 ```
 
 Skriptet vil guide deg gjennom prosessen, inkludert valg av servertype (med eller uten Bedrock-støtte via GeyserMC) og installasjon av et hjelpeskript (`start.sh`) for å starte serveren senere.
