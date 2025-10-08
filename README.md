@@ -1,37 +1,34 @@
-# mcsettupubuntu
-minecraft server settopp for ubtunu
+# Ubuntu Scripts
 
-får å bruke scripted
+Dette repoet inneholder diverse skript for å automatisere oppsett på Ubuntu.
 
-  ```bash
-  wget https://github.com/nokoniko/ubuntu-scripts/blob/main/minecraft/serveropset.sh
-  ```
-  ```bash
-  chmod +x serveropset.sh
-  ```
-  ```bash
-  ./serveropset.sh
-  ```
+## Minecraft Server Oppsett
 
-om du vill ha et script som starter serveren ( blir automatisk med i serveroppset.sh )
+Dette skriptet automatiserer oppsettet av en Minecraft Java Edition-server (Vanilla eller PaperMC) på Ubuntu.
 
-  ```bash
-  wget https://raw.githubusercontent.com/nokoniko/automatisk-paper-server-ubuntu/refs/heads/main/start.sh
-  ```
-  ```bash
-  chmod +x start.sh
-  ```
-  ```bash
-  ./start.sh
-  ```
+### Bruk
 
-# Lamp setopp
+Kjør følgende kommandoer i terminalen for å laste ned og kjøre skriptet:
+```bash
+wget https://raw.githubusercontent.com/nokoniko/ubuntu-scripts/main/minecraft/serveropset.sh
+chmod +x serveropset.sh
+./serveropset.sh
+```
 
-får å bruke dette må du 
-```sh
-wget https://github.com/nokoniko/ubuntu-scripts/blob/main/adnre%20scripts/lamp-setup.sh
+Skriptet vil guide deg gjennom prosessen, inkludert valg av servertype (med eller uten Bedrock-støtte via GeyserMC) og installasjon av et hjelpeskript (`start.sh`) for å starte serveren senere.
+
+## LAMP Stack Oppsett
+
+Dette skriptet setter opp en full LAMP-stack (Linux, Apache, MySQL, PHP) på Ubuntu. Det oppretter også en ny bruker med `sudo`-rettigheter.
+
+### Bruk
+
+**Advarsel:** Dette skriptet må kjøres som `root`-brukeren, da det oppretter en ny systembruker.
+
+Kjør følgende kommandoer i terminalen:
+```bash
+wget https://raw.githubusercontent.com/nokoniko/ubuntu-scripts/main/adnre_scripts/lamp-setup.sh
 chmod +x lamp-setup.sh
-./lamp-setup.sh
+sudo ./lamp-setup.sh
 ```
 Du må runne dette på root fordi den lager en ny bruker med sudo perms.
-
