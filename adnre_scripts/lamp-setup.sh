@@ -34,6 +34,7 @@ sudo usermod -aG sudo "$USERNAME"
 sudo -i -u "$USERNAME" bash << EOF
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install lamp-server^ -y
+sudo apt install git
 sudo systemctl start mysql && sudo systemctl enable mysql
 
 sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$ROOT_PASS'; FLUSH PRIVILEGES;"
